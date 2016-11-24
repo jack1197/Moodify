@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using Xamarin.Forms;
 
 namespace Moodify
 {
@@ -30,7 +32,8 @@ namespace Moodify
 			MainPage = RootPage;
 		}
 
-		protected override void OnStart()
+
+        protected override void OnStart()
 		{
 			// Handle when your app starts
 		}
