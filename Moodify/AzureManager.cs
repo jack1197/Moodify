@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Moodify
 {
-    class AzureManager
+    public class AzureManager
     {
 
 
@@ -19,7 +19,7 @@ namespace Moodify
 
         private AzureManager()
         {
-            this.client = new MobileServiceClient("jw-msatest.azurewebsites.net");
+            this.client = new MobileServiceClient("https://jw-msatest.azurewebsites.net/");
             this.timelineTable = this.client.GetTable<Timeline>();
         }
 
@@ -33,6 +33,24 @@ namespace Moodify
         public async Task<List<Timeline>> GetTimelines()
         {
             return await this.timelineTable.ToListAsync();
+        }
+
+
+        public async Task AddTimeline(Timeline timeline)
+        {
+            await this.timelineTable.InsertAsync(timeline);
+        }
+
+
+        public async Task UpdateTimeline(Timeline timeline)
+        {
+            await this.timelineTable.UpdateAsync(timeline);
+        }
+
+
+        public async Task DeleteTimeline(Timeline timeline)
+        {
+            await this.timelineTable.DeleteAsync(timeline);
         }
 
 

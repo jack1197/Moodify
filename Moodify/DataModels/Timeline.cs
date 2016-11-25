@@ -44,6 +44,7 @@ namespace Moodify.DataModels
 
         [JsonProperty(PropertyName = "lon")]
         public double Lon { get; set; }
+        
 
     }
 }

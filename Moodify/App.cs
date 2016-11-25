@@ -1,12 +1,20 @@
-﻿using Plugin.Permissions;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Moodify
 {
-	public partial class App : Application
+
+    public interface IAuthenticate
+    {
+        Task<bool> Authenticate();
+    }
+
+
+    public partial class App : Application
 	{
-		
 		public static NavigationPage NavigationPage { get; private set; }
 		public static RootPage RootPage;
 
@@ -32,6 +40,12 @@ namespace Moodify
 			MainPage = RootPage;
 		}
 
+        public static IAuthenticate Authenticator { get; private set; }
+
+        public static void Init(IAuthenticate authenticator)
+        {
+            Authenticator = authenticator;
+        }
 
         protected override void OnStart()
 		{
